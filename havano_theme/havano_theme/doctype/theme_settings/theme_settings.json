@@ -1,0 +1,176 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-10-19 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "theme_section",
+  "enable_theme",
+  "theme_mode",
+  "column_break_3",
+  "primary_color",
+  "sidebar_section",
+  "sidebar_style",
+  "show_sidebar_icons",
+  "column_break_7",
+  "enable_sidebar_search",
+  "sidebar_width",
+  "visual_enhancements_section",
+  "enable_rounded_corners",
+  "enable_smooth_transitions",
+  "column_break_12",
+  "enable_hover_effects",
+  "sidebar_icon_style",
+  "advanced_section",
+  "custom_css",
+  "column_break_16",
+  "custom_js"
+ ],
+ "fields": [
+  {
+   "fieldname": "theme_section",
+   "fieldtype": "Section Break",
+   "label": "Theme Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_theme",
+   "fieldtype": "Check",
+   "label": "Enable Havano Theme"
+  },
+  {
+   "default": "Light",
+   "fieldname": "theme_mode",
+   "fieldtype": "Select",
+   "label": "Theme Mode",
+   "options": "Light\nPurple\nNavy Blue\nDark\nAuto"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Primary Color"
+  },
+  {
+   "fieldname": "sidebar_section",
+   "fieldtype": "Section Break",
+   "label": "Sidebar Settings"
+  },
+  {
+   "default": "Modern",
+   "fieldname": "sidebar_style",
+   "fieldtype": "Select",
+   "label": "Sidebar Style",
+   "options": "Default\nModern\nMinimal"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_sidebar_icons",
+   "fieldtype": "Check",
+   "label": "Show Sidebar Icons"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_sidebar_search",
+   "fieldtype": "Check",
+   "label": "Enable Sidebar Search"
+  },
+  {
+   "default": "280",
+   "description": "Sidebar width in pixels (default: 280)",
+   "fieldname": "sidebar_width",
+   "fieldtype": "Int",
+   "label": "Sidebar Width"
+  },
+  {
+   "fieldname": "visual_enhancements_section",
+   "fieldtype": "Section Break",
+   "label": "Visual Enhancements"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_rounded_corners",
+   "fieldtype": "Check",
+   "label": "Enable Rounded Corners"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_smooth_transitions",
+   "fieldtype": "Check",
+   "label": "Enable Smooth Transitions"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_hover_effects",
+   "fieldtype": "Check",
+   "label": "Enable Hover Effects"
+  },
+  {
+   "default": "Rounded",
+   "fieldname": "sidebar_icon_style",
+   "fieldtype": "Select",
+   "label": "Sidebar Icon Style",
+   "options": "Default\nRounded\nCircle\nSquare"
+  },
+  {
+   "fieldname": "advanced_section",
+   "fieldtype": "Section Break",
+   "label": "Advanced Settings"
+  },
+  {
+   "description": "Add custom CSS to further customize the theme",
+   "fieldname": "custom_css",
+   "fieldtype": "Code",
+   "label": "Custom CSS",
+   "options": "CSS"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Add custom JavaScript for additional functionality",
+   "fieldname": "custom_js",
+   "fieldtype": "Code",
+   "label": "Custom JavaScript",
+   "options": "JS"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-10-19 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Havano Theme",
+ "name": "Theme Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

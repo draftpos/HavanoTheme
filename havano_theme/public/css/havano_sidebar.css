@@ -1,0 +1,1304 @@
+/* Havano Theme - Subtle Sidebar Enhancements */
+/* Keeps Frappe's design philosophy, only adds polish */
+
+:root {
+	--havano-border-radius: 6px;
+	--havano-transition: all 0.2s ease;
+	--havano-hover-bg: #f5f5f5;
+	--havano-selected-bg: #e8f0fe;
+	--havano-icon-size: 20px;
+}
+
+/* ========== REDESIGNED SIDEBAR LAYOUT ========== */
+
+/* Sidebar starts from absolute left - no space */
+.layout-side-section {
+	position: fixed !important;
+	left: 0 !important;
+	top: 0 !important;
+	height: 100vh !important;
+	margin: 0 !important;
+	padding: 10px !important;
+	background-color: var(--fg-color) !important;
+	width: 300px !important;
+	min-width: 300px !important;
+	z-index: 1000 !important;
+	border-right: 1px solid var(--border-color) !important;
+}
+
+/* Main content area adjusted for sidebar */
+.layout-main {
+	margin-left: 300px !important;
+}
+
+.desk-sidebar {
+	padding: var(--padding-md) var(--padding-sm) !important;
+	margin: 0 !important;
+	height: 100% !important;
+	overflow-y: auto !important;
+}
+
+/* Sidebar list items padding */
+.list-sidebar {
+	padding: var(--padding-sm) !important;
+}
+
+/* Move navbar to account for fixed sidebar */
+header.navbar {
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+/* Page-head follows theme design - starts after sidebar */
+.page-head {
+	padding: var(--padding-sm) var(--padding-md) !important;
+	min-height: auto !important;
+	border-bottom: 1px solid var(--border-color) !important;
+	background-color: var(--fg-color) !important;
+	transition: var(--havano-transition);
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+/* Hide menu button in page-head (we use sidebar mobile toggle instead) */
+.page-head .menu-btn-group,
+.page-head .sidebar-toggle-btn,
+.page-head [data-toggle-sidebar] {
+	display: none !important;
+}
+
+/* Make page title more compact */
+.page-head .page-title {
+	font-size: var(--text-lg) !important;
+	font-weight: 600 !important;
+}
+
+/* Reduce spacing in page head */
+.page-head-content {
+	padding: 0 !important;
+}
+
+/* Keep all action buttons visible */
+.page-head .standard-actions {
+	display: flex !important;
+	gap: var(--padding-xs) !important;
+}
+
+/* Page container adjustment */
+.page-container {
+	margin-left: 0 !important;
+}
+
+/* ========== MOBILE MENU IN SIDEBAR ========== */
+
+/* Mobile menu toggle button - hidden by default on desktop */
+.sidebar-mobile-toggle {
+	display: none !important;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 10001 !important;
+	background-color: var(--primary);
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: var(--havano-border-radius);
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	transition: var(--havano-transition);
+	width: 44px;
+	height: 44px;
+	align-items: center;
+	justify-content: center;
+}
+
+.sidebar-mobile-toggle:hover {
+	background-color: var(--primary-dark);
+	transform: scale(1.05);
+}
+
+.sidebar-mobile-toggle:active {
+	transform: scale(0.95);
+}
+
+.sidebar-mobile-toggle svg {
+	width: 24px;
+	height: 24px;
+	stroke: white;
+	fill: none;
+	stroke-width: 2.5;
+}
+
+/* Close icon when sidebar is open */
+.sidebar-mobile-toggle.active svg {
+	transform: rotate(90deg);
+	transition: transform 0.3s ease;
+}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+	display: block;
+	opacity: 1;
+}
+
+/* ========== SUBTLE SIDEBAR ENHANCEMENTS ========== */
+
+/* Smooth transitions on sidebar items */
+.desk-sidebar-item {
+	transition: var(--havano-transition);
+	padding: var(--padding-xs) var(--padding-sm) !important;
+	margin-bottom: 2px !important;
+}
+
+/* Subtle hover effect - keeps Frappe's style */
+.desk-sidebar-item:hover {
+	background-color: var(--havano-hover-bg);
+	border-radius: var(--havano-border-radius);
+}
+
+/* Selected item enhancement - subtle */
+.desk-sidebar-item.selected {
+	background-color: var(--havano-selected-bg);
+	border-radius: var(--havano-border-radius);
+	border-left: 3px solid var(--primary);
+	padding-left: calc(var(--padding-md) - 3px);
+}
+
+/* Icon styling - keeps Frappe icons, just ensures consistency */
+.sidebar-item-icon svg,
+.sidebar-item-icon .icon {
+	width: var(--havano-icon-size);
+	height: var(--havano-icon-size);
+	transition: var(--havano-transition);
+}
+
+/* Subtle icon animation on hover */
+.desk-sidebar-item:hover .sidebar-item-icon svg,
+.desk-sidebar-item:hover .sidebar-item-icon .icon {
+	transform: scale(1.05);
+}
+
+/* Smooth scrollbar - subtle enhancement */
+.list-sidebar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.list-sidebar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.list-sidebar::-webkit-scrollbar-thumb {
+	background: #cbd5e0;
+	border-radius: 3px;
+}
+
+.list-sidebar::-webkit-scrollbar-thumb:hover {
+	background: #a0aec0;
+}
+
+/* Search box enhancement - subtle */
+.sidebar-search input {
+	border-radius: var(--havano-border-radius);
+	transition: var(--havano-transition);
+}
+
+.sidebar-search input:focus {
+	box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+/* Dropdown arrows - smooth animation */
+.desk-sidebar-item .dropdown-toggle::after {
+	transition: transform 0.2s ease;
+}
+
+.desk-sidebar-item.show .dropdown-toggle::after,
+.desk-sidebar-item[aria-expanded="true"] .dropdown-toggle::after {
+	transform: rotate(180deg);
+}
+
+/* ========== THEME VARIATIONS (OPTIONAL) ========== */
+
+/* Purple theme - only if enabled in settings */
+[data-havano-theme="purple"] .layout-side-section {
+	background: linear-gradient(180deg, #4A2F87 0%, #3A2370 100%) !important;
+	border-right-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-havano-theme="purple"] .desk-sidebar {
+	background: transparent !important;
+}
+
+[data-havano-theme="purple"] .list-sidebar {
+	background: transparent !important;
+}
+
+/* Purple theme - page head */
+[data-havano-theme="purple"] .page-head {
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+[data-havano-theme="purple"] .page-head .page-title,
+[data-havano-theme="purple"] .page-head .breadcrumbs a{
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+
+
+
+[data-havano-theme="purple"] .desk-sidebar-item,
+[data-havano-theme="purple"] .desk-sidebar-item a,
+[data-havano-theme="purple"] .sidebar-item-label,
+[data-havano-theme="purple"] .sidebar-child-item {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="purple"] .desk-sidebar-item:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-havano-theme="purple"] .desk-sidebar-item.selected {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	border-left-color: white !important;
+}
+
+/* Sidebar child items */
+[data-havano-theme="purple"] .sidebar-child-item svg,
+[data-havano-theme="purple"] .sidebar-child-item .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+	stroke: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="purple"] .standard-sidebar-label {
+	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-havano-theme="purple"] .sidebar-item-icon,
+[data-havano-theme="purple"] .sidebar-item-icon svg,
+[data-havano-theme="purple"] .sidebar-item-icon .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Search input in purple theme */
+[data-havano-theme="purple"] .sidebar-search input {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	border-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
+[data-havano-theme="purple"] .sidebar-search input::placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* All SVG and icons white in purple theme */
+[data-havano-theme="purple"] .page-head .icon,
+[data-havano-theme="purple"] .page-head svg,
+[data-havano-theme="purple"] .page-head use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* All form controls and buttons SVG white in purple theme */
+[data-havano-theme="purple"] .btn svg,
+[data-havano-theme="purple"] .btn .icon,
+[data-havano-theme="purple"] .btn use,
+[data-havano-theme="purple"] .dropdown-toggle svg,
+[data-havano-theme="purple"] .dropdown-toggle .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Ellipsis menu and action buttons white in purple theme */
+[data-havano-theme="purple"] .menu-btn-group svg,
+[data-havano-theme="purple"] .menu-btn-group .icon,
+[data-havano-theme="purple"] .actions-btn-group svg,
+[data-havano-theme="purple"] .actions-btn-group .icon,
+[data-havano-theme="purple"] .standard-actions svg,
+[data-havano-theme="purple"] .standard-actions .icon,
+[data-havano-theme="purple"] .btn-default svg,
+[data-havano-theme="purple"] .btn-default .icon,
+[data-havano-theme="purple"] .btn-group svg,
+[data-havano-theme="purple"] .btn-group .icon,
+[data-havano-theme="purple"] [data-original-title] svg,
+[data-havano-theme="purple"] [data-original-title] .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Dropdown menus in purple theme */
+[data-havano-theme="purple"] .dropdown-menu {
+	background-color: rgba(74, 47, 135, 0.95) !important;
+	border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-havano-theme="purple"] .dropdown-menu .dropdown-item {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="purple"] .dropdown-menu .dropdown-item:hover {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
+[data-havano-theme="purple"] .dropdown-menu .dropdown-item svg,
+[data-havano-theme="purple"] .dropdown-menu .dropdown-item .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Ellipsis and more options button specifically */
+[data-havano-theme="purple"] .btn-more svg,
+[data-havano-theme="purple"] .btn-more .icon,
+[data-havano-theme="purple"] [data-action="menu"] svg,
+[data-havano-theme="purple"] [data-action="menu"] .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Sidebar specific elements in purple theme */
+[data-havano-theme="purple"] .list-tag-preview,
+[data-havano-theme="purple"] .sidebar-label,
+[data-havano-theme="purple"] .add-group-by,
+[data-havano-theme="purple"] .pill-label,
+[data-havano-theme="purple"] .explore-link,
+[data-havano-theme="purple"] .modified-by,
+[data-havano-theme="purple"] .created-by,
+[data-havano-theme="purple"] .sidebar-stat,
+[data-havano-theme="purple"] .sidebar-tag,
+[data-havano-theme="purple"] .filter-label {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Ellipsis in sidebar elements */
+[data-havano-theme="purple"] .list-tag-preview .ellipsis,
+[data-havano-theme="purple"] .sidebar-label .ellipsis,
+[data-havano-theme="purple"] .pill-label .ellipsis {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Links in sidebar */
+[data-havano-theme="purple"] .explore-link a,
+[data-havano-theme="purple"] .modified-by a,
+[data-havano-theme="purple"] .created-by a {
+	color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-havano-theme="purple"] .explore-link a:hover,
+[data-havano-theme="purple"] .modified-by a:hover,
+[data-havano-theme="purple"] .created-by a:hover {
+	color: white !important;
+}
+
+/* Icons in these elements */
+[data-havano-theme="purple"] .list-tag-preview svg,
+[data-havano-theme="purple"] .sidebar-label svg,
+[data-havano-theme="purple"] .add-group-by svg,
+[data-havano-theme="purple"] .pill-label svg,
+[data-havano-theme="purple"] .explore-link svg,
+[data-havano-theme="purple"] .modified-by svg,
+[data-havano-theme="purple"] .created-by svg,
+[data-havano-theme="purple"] .sidebar-stat svg {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Tag pills styling */
+[data-havano-theme="purple"] .tag-pill,
+[data-havano-theme="purple"] .pill {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="purple"] .tag-pill:hover,
+[data-havano-theme="purple"] .pill:hover {
+	background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Sidebar section labels */
+[data-havano-theme="purple"] .form-sidebar .sidebar-section-head,
+[data-havano-theme="purple"] .form-sidebar .sidebar-heading {
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Small text and meta info */
+[data-havano-theme="purple"] .text-muted,
+[data-havano-theme="purple"] .small,
+[data-havano-theme="purple"] .meta-info {
+	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Navbar SVG icons white in purple theme */
+[data-havano-theme="purple"] header.navbar svg,
+[data-havano-theme="purple"] header.navbar .icon,
+[data-havano-theme="purple"] header.navbar use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Assignments, sharing, follows, counts in purple theme */
+[data-havano-theme="purple"] .assignments,
+[data-havano-theme="purple"] .share-label,
+[data-havano-theme="purple"] .form-follow,
+[data-havano-theme="purple"] .comments-count,
+[data-havano-theme="purple"] .like-count,
+[data-havano-theme="purple"] .sidebar-stat-item,
+[data-havano-theme="purple"] .add-assignment-label {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* SVGs in these elements */
+[data-havano-theme="purple"] .assignments svg,
+[data-havano-theme="purple"] .share-label svg,
+[data-havano-theme="purple"] .form-follow svg,
+[data-havano-theme="purple"] .comments-count svg,
+[data-havano-theme="purple"] .like-count svg,
+[data-havano-theme="purple"] .sidebar-stat-item svg,
+[data-havano-theme="purple"] .add-assignment-label svg,
+[data-havano-theme="purple"] .add-assignment-label .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Links and buttons in these sections */
+[data-havano-theme="purple"] .assignments a,
+[data-havano-theme="purple"] .share-label a,
+[data-havano-theme="purple"] .form-follow a,
+[data-havano-theme="purple"] .comments-count a,
+[data-havano-theme="purple"] .like-count a,
+[data-havano-theme="purple"] .add-assignment-label a {
+	color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-havano-theme="purple"] .assignments a:hover,
+[data-havano-theme="purple"] .share-label a:hover,
+[data-havano-theme="purple"] .form-follow a:hover,
+[data-havano-theme="purple"] .comments-count a:hover,
+[data-havano-theme="purple"] .like-count a:hover,
+[data-havano-theme="purple"] .add-assignment-label a:hover {
+	color: white !important;
+}
+
+/* Buttons in sidebar sections */
+[data-havano-theme="purple"] .assignments .btn,
+[data-havano-theme="purple"] .share-label .btn,
+[data-havano-theme="purple"] .form-follow .btn {
+	color: rgba(255, 255, 255, 0.95) !important;
+	border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-havano-theme="purple"] .assignments .btn:hover,
+[data-havano-theme="purple"] .share-label .btn:hover,
+[data-havano-theme="purple"] .form-follow .btn:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	color: white !important;
+}
+
+/* Assignment/comment/like badges */
+[data-havano-theme="purple"] .badge,
+[data-havano-theme="purple"] .count {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+	color: white !important;
+}
+
+/* ========== NAVY BLUE THEME ========== */
+
+/* Navy Blue theme - sidebar with navy gradient */
+[data-havano-theme="navy blue"] .layout-side-section {
+	background: linear-gradient(180deg, #002b80 0%, #001a4d 100%) !important;
+	border-right-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-havano-theme="navy blue"] .desk-sidebar {
+	background: transparent !important;
+}
+
+[data-havano-theme="navy blue"] .list-sidebar {
+	background: transparent !important;
+}
+
+/* Navy Blue theme - page head */
+[data-havano-theme="navy blue"] .page-head {
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+[data-havano-theme="navy blue"] .page-head .page-title,
+[data-havano-theme="navy blue"] .page-head .breadcrumbs a{
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="navy blue"] .desk-sidebar-item,
+[data-havano-theme="navy blue"] .desk-sidebar-item a,
+[data-havano-theme="navy blue"] .sidebar-item-label,
+[data-havano-theme="navy blue"] .sidebar-child-item {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="navy blue"] .desk-sidebar-item:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-havano-theme="navy blue"] .desk-sidebar-item.selected {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	border-left-color: white !important;
+}
+
+/* Sidebar child items */
+[data-havano-theme="navy blue"] .sidebar-child-item svg,
+[data-havano-theme="navy blue"] .sidebar-child-item .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+	stroke: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="navy blue"] .standard-sidebar-label {
+	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-havano-theme="navy blue"] .sidebar-item-icon,
+[data-havano-theme="navy blue"] .sidebar-item-icon svg,
+[data-havano-theme="navy blue"] .sidebar-item-icon .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Search input in navy blue theme */
+[data-havano-theme="navy blue"] .sidebar-search input {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	border-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] .sidebar-search input::placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* All SVG and icons white in navy blue theme */
+[data-havano-theme="navy blue"] .page-head .icon,
+[data-havano-theme="navy blue"] .page-head svg,
+[data-havano-theme="navy blue"] .page-head use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* All form controls and buttons SVG white in navy blue theme */
+[data-havano-theme="navy blue"] .btn svg,
+[data-havano-theme="navy blue"] .btn .icon,
+[data-havano-theme="navy blue"] .btn use,
+[data-havano-theme="navy blue"] .dropdown-toggle svg,
+[data-havano-theme="navy blue"] .dropdown-toggle .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Ellipsis menu and action buttons white in navy blue theme */
+[data-havano-theme="navy blue"] .menu-btn-group svg,
+[data-havano-theme="navy blue"] .menu-btn-group .icon,
+[data-havano-theme="navy blue"] .actions-btn-group svg,
+[data-havano-theme="navy blue"] .actions-btn-group .icon,
+[data-havano-theme="navy blue"] .standard-actions svg,
+[data-havano-theme="navy blue"] .standard-actions .icon,
+[data-havano-theme="navy blue"] .btn-default svg,
+[data-havano-theme="navy blue"] .btn-default .icon,
+[data-havano-theme="navy blue"] .btn-group svg,
+[data-havano-theme="navy blue"] .btn-group .icon,
+[data-havano-theme="navy blue"] [data-original-title] svg,
+[data-havano-theme="navy blue"] [data-original-title] .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Dropdown menus in navy blue theme */
+[data-havano-theme="navy blue"] .dropdown-menu {
+	background-color: rgba(0, 43, 128, 0.95) !important;
+	border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-havano-theme="navy blue"] .dropdown-menu .dropdown-item {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="navy blue"] .dropdown-menu .dropdown-item:hover {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] .dropdown-menu .dropdown-item svg,
+[data-havano-theme="navy blue"] .dropdown-menu .dropdown-item .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Ellipsis and more options button specifically */
+[data-havano-theme="navy blue"] .btn-more svg,
+[data-havano-theme="navy blue"] .btn-more .icon,
+[data-havano-theme="navy blue"] [data-action="menu"] svg,
+[data-havano-theme="navy blue"] [data-action="menu"] .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Sidebar specific elements in navy blue theme */
+[data-havano-theme="navy blue"] .list-tag-preview,
+[data-havano-theme="navy blue"] .sidebar-label,
+[data-havano-theme="navy blue"] .add-group-by,
+[data-havano-theme="navy blue"] .pill-label,
+[data-havano-theme="navy blue"] .explore-link,
+[data-havano-theme="navy blue"] .modified-by,
+[data-havano-theme="navy blue"] .created-by,
+[data-havano-theme="navy blue"] .sidebar-stat,
+[data-havano-theme="navy blue"] .sidebar-tag,
+[data-havano-theme="navy blue"] .filter-label {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Ellipsis in sidebar elements */
+[data-havano-theme="navy blue"] .list-tag-preview .ellipsis,
+[data-havano-theme="navy blue"] .sidebar-label .ellipsis,
+[data-havano-theme="navy blue"] .pill-label .ellipsis {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Links in sidebar */
+[data-havano-theme="navy blue"] .explore-link a,
+[data-havano-theme="navy blue"] .modified-by a,
+[data-havano-theme="navy blue"] .created-by a {
+	color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-havano-theme="navy blue"] .explore-link a:hover,
+[data-havano-theme="navy blue"] .modified-by a:hover,
+[data-havano-theme="navy blue"] .created-by a:hover {
+	color: white !important;
+}
+
+/* Icons in these elements */
+[data-havano-theme="navy blue"] .list-tag-preview svg,
+[data-havano-theme="navy blue"] .sidebar-label svg,
+[data-havano-theme="navy blue"] .add-group-by svg,
+[data-havano-theme="navy blue"] .pill-label svg,
+[data-havano-theme="navy blue"] .explore-link svg,
+[data-havano-theme="navy blue"] .modified-by svg,
+[data-havano-theme="navy blue"] .created-by svg,
+[data-havano-theme="navy blue"] .sidebar-stat svg {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Tag pills styling */
+[data-havano-theme="navy blue"] .tag-pill,
+[data-havano-theme="navy blue"] .pill {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="navy blue"] .tag-pill:hover,
+[data-havano-theme="navy blue"] .pill:hover {
+	background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Sidebar section labels */
+[data-havano-theme="navy blue"] .form-sidebar .sidebar-section-head,
+[data-havano-theme="navy blue"] .form-sidebar .sidebar-heading {
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Small text and meta info */
+[data-havano-theme="navy blue"] .text-muted,
+[data-havano-theme="navy blue"] .small,
+[data-havano-theme="navy blue"] .meta-info {
+	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Navbar SVG icons white in navy blue theme */
+[data-havano-theme="navy blue"] header.navbar svg,
+[data-havano-theme="navy blue"] header.navbar .icon,
+[data-havano-theme="navy blue"] header.navbar use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Assignments, sharing, follows, counts in navy blue theme */
+[data-havano-theme="navy blue"] .assignments,
+[data-havano-theme="navy blue"] .share-label,
+[data-havano-theme="navy blue"] .form-follow,
+[data-havano-theme="navy blue"] .comments-count,
+[data-havano-theme="navy blue"] .like-count,
+[data-havano-theme="navy blue"] .sidebar-stat-item,
+[data-havano-theme="navy blue"] .add-assignment-label {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* SVGs in these elements */
+[data-havano-theme="navy blue"] .assignments svg,
+[data-havano-theme="navy blue"] .share-label svg,
+[data-havano-theme="navy blue"] .form-follow svg,
+[data-havano-theme="navy blue"] .comments-count svg,
+[data-havano-theme="navy blue"] .like-count svg,
+[data-havano-theme="navy blue"] .sidebar-stat-item svg,
+[data-havano-theme="navy blue"] .add-assignment-label svg,
+[data-havano-theme="navy blue"] .add-assignment-label .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Links and buttons in these sections */
+[data-havano-theme="navy blue"] .assignments a,
+[data-havano-theme="navy blue"] .share-label a,
+[data-havano-theme="navy blue"] .form-follow a,
+[data-havano-theme="navy blue"] .comments-count a,
+[data-havano-theme="navy blue"] .like-count a,
+[data-havano-theme="navy blue"] .add-assignment-label a {
+	color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-havano-theme="navy blue"] .assignments a:hover,
+[data-havano-theme="navy blue"] .share-label a:hover,
+[data-havano-theme="navy blue"] .form-follow a:hover,
+[data-havano-theme="navy blue"] .comments-count a:hover,
+[data-havano-theme="navy blue"] .like-count a:hover,
+[data-havano-theme="navy blue"] .add-assignment-label a:hover {
+	color: white !important;
+}
+
+/* Buttons in sidebar sections */
+[data-havano-theme="navy blue"] .assignments .btn,
+[data-havano-theme="navy blue"] .share-label .btn,
+[data-havano-theme="navy blue"] .form-follow .btn {
+	color: rgba(255, 255, 255, 0.95) !important;
+	border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-havano-theme="navy blue"] .assignments .btn:hover,
+[data-havano-theme="navy blue"] .share-label .btn:hover,
+[data-havano-theme="navy blue"] .form-follow .btn:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	color: white !important;
+}
+
+/* Assignment/comment/like badges */
+[data-havano-theme="navy blue"] .badge,
+[data-havano-theme="navy blue"] .count {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+	color: white !important;
+}
+
+/* Dark theme - only if enabled in settings */
+[data-havano-theme="dark"] .layout-side-section {
+	background-color: #1a202c !important;
+	border-right-color: #2d3748 !important;
+}
+
+[data-havano-theme="dark"] .desk-sidebar {
+	background: transparent !important;
+}
+
+[data-havano-theme="dark"] .list-sidebar {
+	background: transparent !important;
+}
+
+/* Dark theme - page head */
+[data-havano-theme="dark"] .page-head {
+	/* background-color: #1a202c !important;
+	border-bottom-color: #2d3748 !important; */
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+[data-havano-theme="dark"] .page-head .page-title,
+[data-havano-theme="dark"] .page-head .breadcrumbs a {
+	color: #e2e8f0 !important;
+}
+
+
+/* All SVG and icons white in dark theme */
+[data-havano-theme="dark"] .page-head .icon,
+[data-havano-theme="dark"] .page-head svg,
+[data-havano-theme="dark"] .page-head use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="dark"] .desk-sidebar-item,
+[data-havano-theme="dark"] .desk-sidebar-item a,
+[data-havano-theme="dark"] .sidebar-item-label,
+[data-havano-theme="dark"] .sidebar-child-item {
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .desk-sidebar-item:hover {
+	background-color: #2d3748 !important;
+}
+
+[data-havano-theme="dark"] .desk-sidebar-item.selected {
+	background-color: #374151 !important;
+	border-left-color: var(--primary) !important;
+}
+
+/* Sidebar child items */
+[data-havano-theme="dark"] .sidebar-child-item svg,
+[data-havano-theme="dark"] .sidebar-child-item .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="dark"] .standard-sidebar-label {
+	color: #a0aec0 !important;
+}
+
+/* All sidebar SVG and icons white in dark theme */
+[data-havano-theme="dark"] .sidebar-item-icon,
+[data-havano-theme="dark"] .sidebar-item-icon svg,
+[data-havano-theme="dark"] .sidebar-item-icon .icon,
+[data-havano-theme="dark"] .sidebar-item-icon use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="dark"] .desk-sidebar svg,
+[data-havano-theme="dark"] .list-sidebar svg,
+[data-havano-theme="dark"] .layout-side-section svg,
+[data-havano-theme="dark"] .layout-side-section use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Search input in dark theme */
+[data-havano-theme="dark"] .sidebar-search input {
+	background-color: #2d3748 !important;
+	border-color: #4a5568 !important;
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .sidebar-search input::placeholder {
+	color: #a0aec0 !important;
+}
+
+/* Navbar SVG icons white in dark theme */
+[data-havano-theme="dark"] header.navbar svg,
+[data-havano-theme="dark"] header.navbar .icon,
+[data-havano-theme="dark"] header.navbar use {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* All form controls and buttons SVG white in dark theme */
+[data-havano-theme="dark"] .btn svg,
+[data-havano-theme="dark"] .btn .icon,
+[data-havano-theme="dark"] .btn use,
+[data-havano-theme="dark"] .dropdown-toggle svg,
+[data-havano-theme="dark"] .dropdown-toggle .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Ellipsis menu and action buttons white in dark theme */
+[data-havano-theme="dark"] .menu-btn-group svg,
+[data-havano-theme="dark"] .menu-btn-group .icon,
+[data-havano-theme="dark"] .actions-btn-group svg,
+[data-havano-theme="dark"] .actions-btn-group .icon,
+[data-havano-theme="dark"] .standard-actions svg,
+[data-havano-theme="dark"] .standard-actions .icon,
+[data-havano-theme="dark"] .btn-default svg,
+[data-havano-theme="dark"] .btn-default .icon,
+[data-havano-theme="dark"] .btn-group svg,
+[data-havano-theme="dark"] .btn-group .icon,
+[data-havano-theme="dark"] [data-original-title] svg,
+[data-havano-theme="dark"] [data-original-title] .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Dropdown menus in dark theme */
+[data-havano-theme="dark"] .dropdown-menu {
+	background-color: #2d3748 !important;
+	border-color: #4a5568 !important;
+}
+
+[data-havano-theme="dark"] .dropdown-menu .dropdown-item {
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .dropdown-menu .dropdown-item:hover {
+	background-color: #374151 !important;
+	color: white !important;
+}
+
+[data-havano-theme="dark"] .dropdown-menu .dropdown-item svg,
+[data-havano-theme="dark"] .dropdown-menu .dropdown-item .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Ellipsis and more options button specifically */
+[data-havano-theme="dark"] .btn-more svg,
+[data-havano-theme="dark"] .btn-more .icon,
+[data-havano-theme="dark"] [data-action="menu"] svg,
+[data-havano-theme="dark"] [data-action="menu"] .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Sidebar specific elements in dark theme */
+[data-havano-theme="dark"] .list-tag-preview,
+[data-havano-theme="dark"] .sidebar-label,
+[data-havano-theme="dark"] .add-group-by,
+[data-havano-theme="dark"] .pill-label,
+[data-havano-theme="dark"] .explore-link,
+[data-havano-theme="dark"] .modified-by,
+[data-havano-theme="dark"] .created-by,
+[data-havano-theme="dark"] .sidebar-stat,
+[data-havano-theme="dark"] .sidebar-tag,
+[data-havano-theme="dark"] .filter-label {
+	color: #e2e8f0 !important;
+}
+
+/* Ellipsis in sidebar elements */
+[data-havano-theme="dark"] .list-tag-preview .ellipsis,
+[data-havano-theme="dark"] .sidebar-label .ellipsis,
+[data-havano-theme="dark"] .pill-label .ellipsis {
+	color: #e2e8f0 !important;
+}
+
+/* Links in sidebar */
+[data-havano-theme="dark"] .explore-link a,
+[data-havano-theme="dark"] .modified-by a,
+[data-havano-theme="dark"] .created-by a {
+	color: #93c5fd !important;
+}
+
+[data-havano-theme="dark"] .explore-link a:hover,
+[data-havano-theme="dark"] .modified-by a:hover,
+[data-havano-theme="dark"] .created-by a:hover {
+	color: #60a5fa !important;
+}
+
+/* Icons in these elements */
+[data-havano-theme="dark"] .list-tag-preview svg,
+[data-havano-theme="dark"] .sidebar-label svg,
+[data-havano-theme="dark"] .add-group-by svg,
+[data-havano-theme="dark"] .pill-label svg,
+[data-havano-theme="dark"] .explore-link svg,
+[data-havano-theme="dark"] .modified-by svg,
+[data-havano-theme="dark"] .created-by svg,
+[data-havano-theme="dark"] .sidebar-stat svg {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Tag pills styling */
+[data-havano-theme="dark"] .tag-pill,
+[data-havano-theme="dark"] .pill {
+	background-color: #4a5568 !important;
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .tag-pill:hover,
+[data-havano-theme="dark"] .pill:hover {
+	background-color: #5a6678 !important;
+}
+
+/* Sidebar section labels */
+[data-havano-theme="dark"] .form-sidebar .sidebar-section-head,
+[data-havano-theme="dark"] .form-sidebar .sidebar-heading {
+	color: #cbd5e0 !important;
+}
+
+/* Small text and meta info */
+[data-havano-theme="dark"] .text-muted,
+[data-havano-theme="dark"] .small,
+[data-havano-theme="dark"] .meta-info {
+	color: #a0aec0 !important;
+}
+
+/* Assignments, sharing, follows, counts in dark theme */
+[data-havano-theme="dark"] .assignments,
+[data-havano-theme="dark"] .share-label,
+[data-havano-theme="dark"] .form-follow,
+[data-havano-theme="dark"] .comments-count,
+[data-havano-theme="dark"] .like-count,
+[data-havano-theme="dark"] .sidebar-stat-item,
+[data-havano-theme="dark"] .add-assignment-label {
+	color: #e2e8f0 !important;
+}
+
+/* SVGs in these elements */
+[data-havano-theme="dark"] .assignments svg,
+[data-havano-theme="dark"] .share-label svg,
+[data-havano-theme="dark"] .form-follow svg,
+[data-havano-theme="dark"] .comments-count svg,
+[data-havano-theme="dark"] .like-count svg,
+[data-havano-theme="dark"] .sidebar-stat-item svg,
+[data-havano-theme="dark"] .add-assignment-label svg,
+[data-havano-theme="dark"] .add-assignment-label .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+/* Links and buttons in these sections */
+[data-havano-theme="dark"] .assignments a,
+[data-havano-theme="dark"] .share-label a,
+[data-havano-theme="dark"] .form-follow a,
+[data-havano-theme="dark"] .comments-count a,
+[data-havano-theme="dark"] .like-count a,
+[data-havano-theme="dark"] .add-assignment-label a {
+	color: #93c5fd !important;
+}
+
+[data-havano-theme="dark"] .assignments a:hover,
+[data-havano-theme="dark"] .share-label a:hover,
+[data-havano-theme="dark"] .form-follow a:hover,
+[data-havano-theme="dark"] .comments-count a:hover,
+[data-havano-theme="dark"] .like-count a:hover,
+[data-havano-theme="dark"] .add-assignment-label a:hover {
+	color: #60a5fa !important;
+}
+
+/* Buttons in sidebar sections */
+[data-havano-theme="dark"] .assignments .btn,
+[data-havano-theme="dark"] .share-label .btn,
+[data-havano-theme="dark"] .form-follow .btn {
+	color: #e2e8f0 !important;
+	border-color: #4a5568 !important;
+}
+
+[data-havano-theme="dark"] .assignments .btn:hover,
+[data-havano-theme="dark"] .share-label .btn:hover,
+[data-havano-theme="dark"] .form-follow .btn:hover {
+	background-color: #2d3748 !important;
+	color: white !important;
+}
+
+/* Assignment/comment/like badges */
+[data-havano-theme="dark"] .badge,
+[data-havano-theme="dark"] .count {
+	background-color: #4a5568 !important;
+	color: #e2e8f0 !important;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+	/* Show mobile menu toggle ONLY on mobile */
+	.sidebar-mobile-toggle {
+		display: flex !important;
+	}
+	
+	/* Hide sidebar by default on mobile */
+	.layout-side-section {
+		transform: translateX(-100%);
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		z-index: 10000 !important;
+		box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+		width: 280px !important;
+		background-color: var(--fg-color) !important;
+	}
+	
+	/* Show sidebar when active - ensure it's visible */
+	.layout-side-section.mobile-active {
+		transform: translateX(0) !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		display: block !important;
+		background-color: var(--fg-color) !important;
+	}
+	
+	/* Ensure ALL sidebar content is visible when open */
+	.layout-side-section.mobile-active * {
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+	
+	.layout-side-section.mobile-active .desk-sidebar {
+		display: block !important;
+		height: 100% !important;
+		width: 100% !important;
+		background-color: transparent !important;
+		color: var(--text-color) !important;
+	}
+	
+	.layout-side-section.mobile-active .list-sidebar {
+		display: block !important;
+		background-color: transparent !important;
+	}
+	
+	.layout-side-section.mobile-active .desk-sidebar-item,
+	.layout-side-section.mobile-active .standard-sidebar-item {
+		display: block !important;
+		color: var(--text-color) !important;
+		background-color: transparent !important;
+		position: relative !important;
+		left: 0 !important;
+		right: 0 !important;
+		top: 0 !important;
+	}
+	
+	.layout-side-section.mobile-active .sidebar-item-label,
+	.layout-side-section.mobile-active .sidebar-item-icon {
+		display: inline-block !important;
+		color: var(--text-color) !important;
+	}
+	
+	.layout-side-section.mobile-active .standard-sidebar-section {
+		display: block !important;
+	}
+	
+	/* Ensure flex items remain flex */
+	.layout-side-section.mobile-active .desk-sidebar-item a,
+	.layout-side-section.mobile-active .desk-sidebar-item > div {
+		display: flex !important;
+		align-items: center !important;
+		color: var(--text-color) !important;
+		text-decoration: none !important;
+	}
+	
+	/* Fix text color specifically on mobile */
+	.layout-side-section.mobile-active a,
+	.layout-side-section.mobile-active span,
+	.layout-side-section.mobile-active div {
+		color: var(--text-color) !important;
+	}
+	
+	/* Ensure icons are visible */
+	.layout-side-section.mobile-active svg,
+	.layout-side-section.mobile-active .icon {
+		fill: var(--text-color) !important;
+		stroke: var(--text-color) !important;
+	}
+	
+	/* Adjust content for mobile - full width */
+	.layout-main {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+	
+	/* Navbar full width on mobile */
+	header.navbar {
+		margin-left: 0 !important;
+		width: 100% !important;
+		padding-left: 64px !important;
+		z-index: 999 !important;
+	}
+	
+	/* Page-head full width on mobile */
+	.page-head {
+		margin-left: 0 !important;
+		width: 100% !important;
+		padding-left: 64px !important;
+		z-index: 999 !important;
+	}
+	
+	/* Hide page-head menu button on mobile */
+	.page-head .menu-btn-group,
+	.page-head .sidebar-toggle-btn {
+		display: none !important;
+	}
+	
+	/* Theme-specific page-head on mobile */
+	[data-havano-theme="purple"] .page-head,
+	[data-havano-theme="navy blue"] .page-head,
+	[data-havano-theme="dark"] .page-head {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+	
+	/* Ensure sidebar has proper touch scrolling */
+	.layout-side-section {
+		-webkit-overflow-scrolling: touch;
+		overflow-y: auto !important;
+		overflow-x: hidden !important;
+	}
+	
+	.desk-sidebar {
+		overflow-y: auto !important;
+		overflow-x: hidden !important;
+		-webkit-overflow-scrolling: touch;
+		height: 100% !important;
+		width: 100% !important;
+		padding-top: 60px !important;
+		padding-left: var(--padding-sm) !important;
+		padding-right: var(--padding-sm) !important;
+	}
+	
+	/* Force visibility of all sidebar items on mobile */
+	.list-sidebar,
+	.desk-sidebar-item,
+	.sidebar-item-label {
+		min-height: 30px !important;
+		line-height: normal !important;
+	}
+}
+
+/* Ensure mobile toggle is hidden on desktop */
+@media (min-width: 769px) {
+	.sidebar-mobile-toggle {
+		display: none !important;
+	}
+	
+	.sidebar-overlay {
+		display: none !important;
+	}
+}
+
+/* ========== ICON STYLE - NO BACKGROUND ========== */
+
+/* Icons without background - just SVG with color */
+.sidebar-item-icon {
+	background: none !important;
+	padding: 0 !important;
+}
+
+/* Ensure no background on any icon state */
+.desk-sidebar-item .sidebar-item-icon,
+.desk-sidebar-item:hover .sidebar-item-icon,
+.desk-sidebar-item.selected .sidebar-item-icon {
+	background: none !important;
+	background-color: transparent !important;
+}
+
+/* ========== CUSTOM CSS INJECTION POINT ========== */
+/* Custom CSS from Theme Settings will be injected here */
+#havano-custom-css {
+	/* Placeholder for custom CSS */
+}

@@ -1,0 +1,154 @@
+/**
+ * Havano Theme - Subtle Navbar Enhancements
+ * Keeps Frappe's navbar design, only adds polish
+ */
+
+/* ========== SUBTLE NAVBAR ENHANCEMENTS ========== */
+
+/* Smooth transitions on navbar items */
+.navbar-nav > li > a {
+	transition: all 0.2s ease;
+	border-radius: 6px;
+}
+
+/* Subtle hover effect */
+.navbar-nav > li > a:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Dropdown menu enhancement */
+.navbar-nav .dropdown-menu {
+	border-radius: 8px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	margin-top: 4px;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+	border-radius: 6px;
+	transition: all 0.2s ease;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Search box enhancement */
+#navbar-search input {
+	transition: all 0.2s ease;
+}
+
+#navbar-search input:focus {
+	box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+/* ========== THEME VARIATIONS (OPTIONAL) ========== */
+
+/* Purple theme navbar - matches page-head with darker purple */
+[data-havano-theme="purple"] header.navbar {
+	background: linear-gradient(90deg, #4A2F87 0%, #3A2370 100%) !important;
+	color: white !important;
+	border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Navbar adjusts for fixed sidebar */
+[data-havano-theme="purple"] header.navbar {
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+[data-havano-theme="purple"] .navbar-brand,
+[data-havano-theme="purple"] .navbar-nav > li > a,
+[data-havano-theme="purple"] .navbar-nav > li > a span {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="purple"] .navbar-nav > li > a:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	color: white !important;
+}
+
+[data-havano-theme="purple"] #navbar-search input {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	border-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
+[data-havano-theme="purple"] #navbar-search input::placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-havano-theme="purple"] .dropdown-toggle svg,
+[data-havano-theme="purple"] .navbar .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Dark theme navbar - matches page-head */
+[data-havano-theme="dark"] header.navbar {
+	background-color: #1a202c !important;
+	border-bottom-color: #2d3748 !important;
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+[data-havano-theme="dark"] .navbar-brand,
+[data-havano-theme="dark"] .navbar-nav > li > a,
+[data-havano-theme="dark"] .navbar-nav > li > a span {
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .navbar-nav > li > a:hover {
+	background-color: #2d3748 !important;
+}
+
+[data-havano-theme="dark"] #navbar-search input {
+	background-color: #2d3748 !important;
+	border-color: #4a5568 !important;
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] #navbar-search input::placeholder {
+	color: #a0aec0 !important;
+}
+
+[data-havano-theme="dark"] .dropdown-toggle svg,
+[data-havano-theme="dark"] .navbar .icon {
+	color: #cbd5e0 !important;
+	fill: #cbd5e0 !important;
+}
+
+/* Navy Blue theme navbar - matches page-head */
+[data-havano-theme="navy blue"] header.navbar {
+	background: linear-gradient(90deg, #002b80 0%, #001a4d 100%) !important;
+	color: white !important;
+	border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+	margin-left: 300px !important;
+	width: calc(100% - 300px) !important;
+}
+
+[data-havano-theme="navy blue"] .navbar-brand,
+[data-havano-theme="navy blue"] .navbar-nav > li > a,
+[data-havano-theme="navy blue"] .navbar-nav > li > a span {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="navy blue"] .navbar-nav > li > a:hover {
+	background-color: rgba(255, 255, 255, 0.15) !important;
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] #navbar-search input {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	border-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] #navbar-search input::placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-havano-theme="navy blue"] .dropdown-toggle svg,
+[data-havano-theme="navy blue"] .navbar .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+}
