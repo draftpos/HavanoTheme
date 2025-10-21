@@ -7,12 +7,54 @@ frappe.provide('havano');
 
 havano.sidebar = {
 	settings: null,
+	sidebarOpen: true, // Track sidebar state
 	
 	init: function() {
-		// Wait for app to be ready
+		// Initialize immediately if DOM is ready
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', () => {
+				this.initialize_sidebar();
+			});
+		} else {
+			// DOM is already ready
+			setTimeout(() => {
+				this.initialize_sidebar();
+			}, 100);
+		}
+		
+		// Also wait for app to be ready (Frappe specific)
 		$(document).on('app_ready', () => {
 			this.load_settings();
 			this.setup_mobile_menu();
+		});
+	},
+
+	initialize_sidebar: function() {
+		console.log('Initializing sidebar toggle...');
+		
+		// Check if sidebar exists
+		const sidebar = document.querySelector('.layout-side-section');
+		if (!sidebar) {
+			console.log('Sidebar not found, retrying in 500ms...');
+			setTimeout(() => {
+				this.initialize_sidebar();
+			}, 500);
+			return;
+		}
+		
+		console.log('Sidebar found:', sidebar);
+		this.setup_desktop_toggle();
+		this.setup_keyboard_shortcuts();
+	},
+
+	setup_keyboard_shortcuts: function() {
+		// Add keyboard shortcut for testing (Ctrl/Cmd + B)
+		document.addEventListener('keydown', (e) => {
+			if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+				e.preventDefault();
+				console.log('Keyboard shortcut triggered');
+				this.toggle_sidebar();
+			}
 		});
 	},
 
@@ -252,11 +294,140 @@ havano.sidebar = {
 				toggleButton.removeClass('active');
 			}
 		});
+	},
+
+	setup_desktop_toggle: function() {
+		// Create desktop toggle button
+		if (document.querySelector('.sidebar-toggle-btn')) return;
+
+		const toggleButton = document.createElement('button');
+		toggleButton.className = 'sidebar-toggle-btn';
+		toggleButton.setAttribute('aria-label', 'Toggle Sidebar');
+		toggleButton.innerHTML = `
+			<svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+				<line x1="3" y1="12" x2="21" y2="12"></line>
+				<line x1="3" y1="6" x2="21" y2="6"></line>
+				<line x1="3" y1="18" x2="21" y2="18"></line>
+			</svg>
+		`;
+
+		// Add to body
+		document.body.appendChild(toggleButton);
+
+		// Toggle sidebar on button click
+		toggleButton.addEventListener('click', (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+			this.toggle_sidebar();
+		});
+
+		// Create close button inside sidebar
+		this.create_sidebar_close_button();
+	},
+
+	create_sidebar_close_button: function() {
+		// Create close button inside sidebar
+		if (document.querySelector('.sidebar-close-btn')) return;
+
+		const closeButton = document.createElement('button');
+		closeButton.className = 'sidebar-close-btn';
+		closeButton.setAttribute('aria-label', 'Close Sidebar');
+		closeButton.innerHTML = `
+			<svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+				<line x1="18" y1="6" x2="6" y2="18"></line>
+				<line x1="6" y1="6" x2="18" y2="18"></line>
+			</svg>
+		`;
+
+		// Add to sidebar
+		const sidebar = document.querySelector('.layout-side-section');
+		if (sidebar) {
+			sidebar.appendChild(closeButton);
+
+			// Close sidebar on button click
+			closeButton.addEventListener('click', (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				this.close_sidebar();
+			});
+		}
+	},
+
+	toggle_sidebar: function() {
+		console.log('Toggle sidebar clicked, current state:', this.sidebarOpen);
+		if (this.sidebarOpen) {
+			this.close_sidebar();
+		} else {
+			this.open_sidebar();
+		}
+	},
+
+	open_sidebar: function() {
+		console.log('Opening sidebar...');
+		const sidebar = document.querySelector('.layout-side-section');
+		const body = document.body;
+		
+		if (sidebar) {
+			sidebar.classList.remove('sidebar-closed');
+			sidebar.classList.add('sidebar-open');
+			console.log('Sidebar classes:', sidebar.className);
+		}
+		body.classList.remove('sidebar-closed');
+		this.sidebarOpen = true;
+		this.update_toggle_button_icon();
+	},
+
+	close_sidebar: function() {
+		console.log('Closing sidebar...');
+		const sidebar = document.querySelector('.layout-side-section');
+		const body = document.body;
+		
+		if (sidebar) {
+			sidebar.classList.remove('sidebar-open');
+			sidebar.classList.add('sidebar-closed');
+			console.log('Sidebar classes:', sidebar.className);
+		}
+		body.classList.add('sidebar-closed');
+		this.sidebarOpen = false;
+		this.update_toggle_button_icon();
+	},
+
+	update_toggle_button_icon: function() {
+		const toggleBtn = document.querySelector('.sidebar-toggle-btn svg');
+		if (toggleBtn) {
+			if (this.sidebarOpen) {
+				// Show close icon
+				toggleBtn.innerHTML = `
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				`;
+			} else {
+				// Show menu icon
+				toggleBtn.innerHTML = `
+					<line x1="3" y1="12" x2="21" y2="12"></line>
+					<line x1="3" y1="6" x2="21" y2="6"></line>
+					<line x1="3" y1="18" x2="21" y2="18"></line>
+				`;
+			}
+		}
+	},
+
+	// Test function for debugging
+	test: function() {
+		console.log('Testing sidebar functionality...');
+		console.log('Sidebar element:', document.querySelector('.layout-side-section'));
+		console.log('Toggle button:', document.querySelector('.sidebar-toggle-btn'));
+		console.log('Close button:', document.querySelector('.sidebar-close-btn'));
+		console.log('Current state:', this.sidebarOpen);
+		this.toggle_sidebar();
 	}
 };
 
 // Initialize
 havano.sidebar.init();
+
+// Make test function globally available
+window.testSidebar = () => havano.sidebar.test();
 
 // Refresh on route change
 $(document).on('page-change', function() {

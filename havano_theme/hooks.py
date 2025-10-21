@@ -32,8 +32,17 @@ app_include_css = [
 app_include_js = "/assets/havano_theme/js/havano_sidebar.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/havano_theme/css/havano_theme.css"
-# web_include_js = "/assets/havano_theme/js/havano_theme.js"
+web_include_css = [
+	"/assets/havano_theme/css/havano_web.css",
+	"/assets/havano_theme/css/havano_web_animated.css",
+	"/assets/havano_theme/css/havano_login.css",
+	"/assets/havano_theme/css/havano_sidebar.css"
+]
+web_include_js = [
+	"/assets/havano_theme/js/havano_animated_bg.js",
+	"/assets/havano_theme/js/havano_login.js",
+	"/assets/havano_theme/js/havano_sidebar.js"
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "havano_theme/public/scss/website"
@@ -41,6 +50,9 @@ app_include_js = "/assets/havano_theme/js/havano_sidebar.js"
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
 # webform_include_css = {"doctype": "public/css/doctype.css"}
+
+# Signup form template
+signup_form_template = "havano_theme/templates/signup.html"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
