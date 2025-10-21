@@ -1,0 +1,498 @@
+/* Havano Theme - Animated Login Background */
+
+/* ========== BODY DEFAULT CLASSES ========== */
+
+/* Add default classes to body */
+body {
+	/* Add full-width and no-breadcrumbs classes by default */
+	position: relative;
+}
+
+body.full-width {
+	/* Full width styling */
+	width: 100% !important;
+	max-width: none !important;
+}
+
+body.no-breadcrumbs {
+	/* Hide breadcrumbs */
+	/* Breadcrumbs are hidden via child selectors below */
+	overflow-x: hidden;
+}
+
+body.no-breadcrumbs .breadcrumb,
+body.no-breadcrumbs .page-breadcrumbs,
+body.no-breadcrumbs .breadcrumb-container {
+	display: none !important;
+}
+
+/* ========== ANIMATED BACKGROUND SYSTEM ========== */
+
+/* Base animated background container */
+.animated-bg-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: -1;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4A2F87 100%);
+}
+
+/* Animated gradient background */
+.animated-bg-gradient {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		45deg,
+		#667eea 0%,
+		#764ba2 25%,
+		#4A2F87 50%,
+		#002b80 75%,
+		#667eea 100%
+	);
+	background-size: 400% 400%;
+	animation: gradientShift 15s ease infinite;
+}
+
+/* Floating geometric shapes */
+.animated-shape {
+	position: absolute;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	animation: float 20s infinite linear;
+}
+
+.animated-shape:nth-child(1) {
+	width: 80px;
+	height: 80px;
+	top: 20%;
+	left: 10%;
+	animation-delay: 0s;
+	animation-duration: 25s;
+}
+
+.animated-shape:nth-child(2) {
+	width: 120px;
+	height: 120px;
+	top: 60%;
+	right: 15%;
+	animation-delay: -5s;
+	animation-duration: 30s;
+}
+
+.animated-shape:nth-child(3) {
+	width: 60px;
+	height: 60px;
+	top: 80%;
+	left: 20%;
+	animation-delay: -10s;
+	animation-duration: 20s;
+}
+
+.animated-shape:nth-child(4) {
+	width: 100px;
+	height: 100px;
+	top: 10%;
+	right: 30%;
+	animation-delay: -15s;
+	animation-duration: 35s;
+}
+
+.animated-shape:nth-child(5) {
+	width: 140px;
+	height: 140px;
+	top: 40%;
+	left: 5%;
+	animation-delay: -20s;
+	animation-duration: 28s;
+}
+
+/* Animated particles */
+.animated-particle {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	background: rgba(255, 255, 255, 0.6);
+	border-radius: 50%;
+	animation: particleFloat 12s infinite linear;
+}
+
+.animated-particle:nth-child(6) {
+	top: 15%;
+	left: 25%;
+	animation-delay: 0s;
+}
+
+.animated-particle:nth-child(7) {
+	top: 35%;
+	right: 20%;
+	animation-delay: -2s;
+}
+
+.animated-particle:nth-child(8) {
+	top: 55%;
+	left: 15%;
+	animation-delay: -4s;
+}
+
+.animated-particle:nth-child(9) {
+	top: 75%;
+	right: 35%;
+	animation-delay: -6s;
+}
+
+.animated-particle:nth-child(10) {
+	top: 25%;
+	left: 60%;
+	animation-delay: -8s;
+}
+
+/* Wave animation */
+.animated-wave {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100px;
+	background: linear-gradient(90deg, 
+		rgba(255, 255, 255, 0.1) 0%,
+		rgba(255, 255, 255, 0.05) 50%,
+		rgba(255, 255, 255, 0.1) 100%
+	);
+	animation: wave 8s ease-in-out infinite;
+}
+
+.animated-wave::before {
+	content: '';
+	position: absolute;
+	top: -50px;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background: linear-gradient(90deg, 
+		rgba(255, 255, 255, 0.08) 0%,
+		rgba(255, 255, 255, 0.03) 50%,
+		rgba(255, 255, 255, 0.08) 100%
+	);
+	animation: wave 8s ease-in-out infinite reverse;
+}
+
+/* ========== KEYFRAME ANIMATIONS ========== */
+
+@keyframes gradientShift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0px) rotate(0deg);
+		opacity: 0.7;
+	}
+	25% {
+		transform: translateY(-20px) rotate(90deg);
+		opacity: 1;
+	}
+	50% {
+		transform: translateY(-40px) rotate(180deg);
+		opacity: 0.8;
+	}
+	75% {
+		transform: translateY(-20px) rotate(270deg);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0px) rotate(360deg);
+		opacity: 0.7;
+	}
+}
+
+@keyframes particleFloat {
+	0% {
+		transform: translateY(0px) translateX(0px);
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-100vh) translateX(50px);
+		opacity: 0;
+	}
+}
+
+@keyframes wave {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+/* ========== LOGIN PAGE SPECIFIC STYLING ========== */
+
+/* Override default login page background */
+body.login-page {
+	background: transparent !important;
+	overflow-x: hidden;
+}
+
+body.login-page .page-content-wrapper {
+	background: transparent !important;
+}
+
+/* Login card styling with glassmorphism effect */
+.for-login .page-card,
+.for-signup .page-card,
+.for-forgot .page-card,
+.for-email-login .page-card,
+.for-login-with-email-link .page-card {
+	background: rgba(255, 255, 255, 0.95) !important;
+	backdrop-filter: blur(20px) !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+	border-radius: 20px !important;
+	position: relative;
+	z-index: 10;
+}
+
+/* Enhanced form styling */
+.for-login .form-control,
+.for-signup .form-control,
+.for-forgot .form-control,
+.for-email-login .form-control,
+.for-login-with-email-link .form-control {
+	background: rgba(255, 255, 255, 0.8) !important;
+	border: 2px solid rgba(102, 126, 234, 0.2) !important;
+	border-radius: 12px !important;
+	backdrop-filter: blur(10px) !important;
+	transition: all 0.3s ease !important;
+}
+
+.for-login .form-control:focus,
+.for-signup .form-control:focus,
+.for-forgot .form-control:focus,
+.for-email-login .form-control:focus,
+.for-login-with-email-link .form-control:focus {
+	border-color: #667eea !important;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+	background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Enhanced button styling */
+.for-login .btn-primary,
+.for-signup .btn-primary,
+.for-forgot .btn-primary,
+.for-email-login .btn-primary,
+.for-login-with-email-link .btn-primary {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+	border: none !important;
+	border-radius: 12px !important;
+	box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+	transition: all 0.3s ease !important;
+}
+
+.for-login .btn-primary:hover,
+.for-signup .btn-primary:hover,
+.for-forgot .btn-primary:hover,
+.for-email-login .btn-primary:hover,
+.for-login-with-email-link .btn-primary:hover {
+	transform: translateY(-2px) !important;
+	box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important;
+}
+
+/* Logo and title styling */
+.page-card-head {
+	position: relative;
+	z-index: 10;
+}
+
+.page-card-head h4 {
+	color: #fff !important;
+	font-weight: 700 !important;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+/* Social login buttons */
+.social-login-buttons .btn-login-option {
+	background: rgba(255, 255, 255, 0.8) !important;
+	border: 1px solid rgba(102, 126, 234, 0.2) !important;
+	border-radius: 12px !important;
+	backdrop-filter: blur(10px) !important;
+	transition: all 0.3s ease !important;
+}
+
+.social-login-buttons .btn-login-option:hover {
+	background: rgba(102, 126, 234, 0.1) !important;
+	border-color: #667eea !important;
+	transform: translateY(-2px) !important;
+}
+
+/* Sign up message styling */
+.sign-up-message {
+	color: rgba(255, 255, 255, 0.9) !important;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.sign-up-message a {
+	color: #667eea !important;
+	font-weight: 600 !important;
+	text-decoration: none !important;
+	transition: color 0.3s ease !important;
+}
+
+.sign-up-message a:hover {
+	color: #764ba2 !important;
+	text-decoration: underline !important;
+}
+
+/* Signup form styling */
+.form-signup .form-control {
+	background: rgba(255, 255, 255, 0.8) !important;
+	border: 2px solid rgba(102, 126, 234, 0.2) !important;
+	border-radius: 12px !important;
+	backdrop-filter: blur(10px) !important;
+	transition: all 0.3s ease !important;
+}
+
+.form-signup .form-control:focus {
+	border-color: #667eea !important;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+	background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.form-signup .btn-signup {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+	border: none !important;
+	border-radius: 12px !important;
+	box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+	transition: all 0.3s ease !important;
+}
+
+.form-signup .btn-signup:hover {
+	transform: translateY(-2px) !important;
+	box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important;
+}
+
+/* ========== THEME VARIATIONS ========== */
+
+/* Purple theme animated background */
+[data-havano-theme="purple"] .animated-bg-container {
+	background: linear-gradient(135deg, #4A2F87 0%, #3A2370 50%, #2F1C5C 100%);
+}
+
+[data-havano-theme="purple"] .animated-bg-gradient {
+	background: linear-gradient(
+		45deg,
+		#4A2F87 0%,
+		#3A2370 25%,
+		#2F1C5C 50%,
+		#1a0d2e 75%,
+		#4A2F87 100%
+	);
+}
+
+/* Navy blue theme animated background */
+[data-havano-theme="navy blue"] .animated-bg-container {
+	background: linear-gradient(135deg, #002b80 0%, #001a4d 50%, #001133 100%);
+}
+
+[data-havano-theme="navy blue"] .animated-bg-gradient {
+	background: linear-gradient(
+		45deg,
+		#002b80 0%,
+		#001a4d 25%,
+		#001133 50%,
+		#000a1a 75%,
+		#002b80 100%
+	);
+}
+
+/* Dark theme animated background */
+[data-havano-theme="dark"] .animated-bg-container {
+	background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
+}
+
+[data-havano-theme="dark"] .animated-bg-gradient {
+	background: linear-gradient(
+		45deg,
+		#1a202c 0%,
+		#2d3748 25%,
+		#4a5568 50%,
+		#718096 75%,
+		#1a202c 100%
+	);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 768px) {
+	.animated-shape {
+		display: none; /* Hide shapes on mobile for better performance */
+	}
+	
+	.animated-particle {
+		display: none; /* Hide particles on mobile for better performance */
+	}
+	
+	.for-login .page-card,
+	.for-signup .page-card,
+	.for-forgot .page-card,
+	.for-email-login .page-card,
+	.for-login-with-email-link .page-card {
+		margin: 20px !important;
+		padding: 30px 20px !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.animated-bg-gradient {
+		animation-duration: 20s; /* Slower animation on small screens */
+	}
+	
+	.animated-wave {
+		height: 50px; /* Smaller waves on mobile */
+	}
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+	.animated-bg-gradient,
+	.animated-shape,
+	.animated-particle,
+	.animated-wave {
+		animation: none !important;
+	}
+	
+	.animated-bg-container {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+	}
+}
+
+/* Hardware acceleration for smooth animations */
+.animated-bg-gradient,
+.animated-shape,
+.animated-particle {
+	will-change: transform;
+	transform: translateZ(0);
+}

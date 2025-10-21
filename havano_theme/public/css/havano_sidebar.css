@@ -1,6 +1,32 @@
 /* Havano Theme - Subtle Sidebar Enhancements */
 /* Keeps Frappe's design philosophy, only adds polish */
 
+/* ========== BODY DEFAULT CLASSES ========== */
+
+/* Add default classes to body */
+body {
+	/* Add full-width and no-breadcrumbs classes by default */
+	position: relative;
+}
+
+body.full-width {
+	/* Full width styling */
+	width: 100% !important;
+	max-width: none !important;
+}
+
+body.no-breadcrumbs {
+	/* Hide breadcrumbs */
+	/* Breadcrumbs are hidden via child selectors below */
+	overflow-x: hidden;
+}
+
+body.no-breadcrumbs .breadcrumb,
+body.no-breadcrumbs .page-breadcrumbs,
+body.no-breadcrumbs .breadcrumb-container {
+	display: none !important;
+}
+
 :root {
 	--havano-border-radius: 6px;
 	--havano-transition: all 0.2s ease;
@@ -24,11 +50,35 @@
 	min-width: 300px !important;
 	z-index: 1000 !important;
 	border-right: 1px solid var(--border-color) !important;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	transform: translateX(0) !important; /* Default to open */
+}
+
+/* Sidebar closed state */
+.layout-side-section.sidebar-closed {
+	transform: translateX(-100%);
+}
+
+/* Sidebar open state */
+.layout-side-section.sidebar-open {
+	transform: translateX(0);
+}
+
+/* Default state - sidebar should be open by default */
+.layout-side-section:not(.sidebar-closed) {
+	transform: translateX(0);
 }
 
 /* Main content area adjusted for sidebar */
 .layout-main {
 	margin-left: 300px !important;
+	transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main content when sidebar is closed */
+.sidebar-closed ~ .layout-main,
+body.sidebar-closed .layout-main {
+	margin-left: 0 !important;
 }
 
 .desk-sidebar {
@@ -47,6 +97,14 @@
 header.navbar {
 	margin-left: 300px !important;
 	width: calc(100% - 300px) !important;
+	transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navbar when sidebar is closed */
+.sidebar-closed ~ header.navbar,
+body.sidebar-closed header.navbar {
+	margin-left: 0 !important;
+	width: 100% !important;
 }
 
 /* Page-head follows theme design - starts after sidebar */
@@ -55,9 +113,16 @@ header.navbar {
 	min-height: auto !important;
 	border-bottom: 1px solid var(--border-color) !important;
 	background-color: var(--fg-color) !important;
-	transition: var(--havano-transition);
+	transition: var(--havano-transition), margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	margin-left: 300px !important;
 	width: calc(100% - 300px) !important;
+}
+
+/* Page-head when sidebar is closed */
+.sidebar-closed ~ .page-head,
+body.sidebar-closed .page-head {
+	margin-left: 0 !important;
+	width: 100% !important;
 }
 
 /* Hide menu button in page-head (we use sidebar mobile toggle instead) */
@@ -107,7 +172,61 @@ header.navbar {
 	}
 }
 
-/* ========== MOBILE MENU IN SIDEBAR ========== */
+/* ========== SIDEBAR TOGGLE CONTROLS ========== */
+
+/* Sidebar toggle button - visible on all screen sizes */
+.sidebar-toggle-btn {
+	display: flex !important;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 10001 !important;
+	background-color: var(--primary);
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: var(--havano-border-radius);
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	transition: var(--havano-transition);
+	width: 44px;
+	height: 44px;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Sidebar close button - positioned in top-right of sidebar */
+.sidebar-close-btn {
+	display: flex !important;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 10002 !important;
+	background-color: rgba(0, 0, 0, 0.1);
+	color: var(--text-color);
+	border: none;
+	padding: 8px;
+	border-radius: var(--havano-border-radius);
+	cursor: pointer;
+	transition: var(--havano-transition);
+	width: 36px;
+	height: 36px;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.7;
+}
+
+.sidebar-close-btn:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+	opacity: 1;
+}
+
+.sidebar-close-btn svg {
+	width: 16px;
+	height: 16px;
+	stroke: currentColor;
+	stroke-width: 2;
+}
 
 /* Mobile menu toggle button - hidden by default on desktop */
 .sidebar-mobile-toggle {
@@ -300,6 +419,16 @@ header.navbar {
 [data-havano-theme="purple"] .layout-side-section {
 	background: linear-gradient(180deg, #4A2F87 0%, #3A2370 100%) !important;
 	border-right-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-havano-theme="purple"] .sidebar-close-btn {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="purple"] .sidebar-close-btn:hover {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
 }
 
 [data-havano-theme="purple"] .desk-sidebar {
@@ -736,6 +865,16 @@ header.navbar {
 	border-right-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+[data-havano-theme="navy blue"] .sidebar-close-btn {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="navy blue"] .sidebar-close-btn:hover {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
+}
+
 [data-havano-theme="navy blue"] .desk-sidebar {
 	background: transparent !important;
 }
@@ -1163,6 +1302,16 @@ header.navbar {
 [data-havano-theme="dark"] .layout-side-section {
 	background-color: #1a202c !important;
 	border-right-color: #2d3748 !important;
+}
+
+[data-havano-theme="dark"] .sidebar-close-btn {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="dark"] .sidebar-close-btn:hover {
+	background-color: rgba(255, 255, 255, 0.2) !important;
+	color: white !important;
 }
 
 [data-havano-theme="dark"] .desk-sidebar {
@@ -1610,6 +1759,11 @@ header.navbar {
 		display: flex !important;
 	}
 	
+	/* Hide desktop toggle on mobile */
+	.sidebar-toggle-btn {
+		display: none !important;
+	}
+	
 	/* Hide sidebar by default on mobile */
 	.layout-side-section {
 		transform: translateX(-100%);
@@ -1765,6 +1919,11 @@ header.navbar {
 		display: none !important;
 	}
 	
+	/* Show desktop toggle on larger screens */
+	.sidebar-toggle-btn {
+		display: flex !important;
+	}
+	
 	/* Ensure sidebar is always visible on desktop */
 	.layout-side-section {
 		transform: translateX(0) !important;
@@ -1819,4 +1978,5 @@ header.navbar {
 /* Custom CSS from Theme Settings will be injected here */
 #havano-custom-css {
 	/* Placeholder for custom CSS */
+	display: block;
 }
