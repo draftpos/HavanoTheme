@@ -229,6 +229,22 @@ header.navbar {
 	transform: rotate(180deg);
 }
 
+/* ========== PAGES WITHOUT SIDEBAR ========== */
+
+/* Remove left margin when there's no sidebar */
+.page-container.no-list-sidebar .page-head,
+.page-container.no-list-sidebar .layout-main {
+	margin-left: 0 !important;
+	width: 100% !important;
+}
+
+/* Also handle editable-form pages without sidebar */
+.page-container.editable-form.no-list-sidebar .page-head,
+.page-container.editable-form.no-list-sidebar .layout-main {
+	margin-left: 0 !important;
+	width: 100% !important;
+}
+
 /* ========== THEME VARIATIONS (OPTIONAL) ========== */
 
 /* Purple theme - only if enabled in settings */
@@ -285,6 +301,44 @@ header.navbar {
 
 [data-havano-theme="purple"] .standard-sidebar-label {
 	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Standard sidebar items non-active */
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a {
+	color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a:hover {
+	color: white !important;
+}
+
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active > a,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected > a {
+	color: white !important;
+}
+
+/* Standard sidebar item SVGs */
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a .icon {
+	color: rgba(255, 255, 255, 0.8) !important;
+	fill: rgba(255, 255, 255, 0.8) !important;
+	stroke: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a:hover svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a:hover .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active > a svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active > a .icon,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected > a svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected > a .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
 [data-havano-theme="purple"] .sidebar-item-icon,
@@ -523,6 +577,53 @@ header.navbar {
 	color: white !important;
 }
 
+/* Primary button with theme color */
+[data-havano-theme="purple"] .btn-primary {
+	background-color: #4A2F87 !important;
+	border-color: #3A2370 !important;
+	color: white !important;
+}
+
+[data-havano-theme="purple"] .btn-primary:hover {
+	background-color: #3A2370 !important;
+	border-color: #2F1C5C !important;
+	color: white !important;
+}
+
+/* Sticky top elements with theme color */
+[data-havano-theme="purple"] .sticky-top,
+[data-havano-theme="purple"] .page-head.sticky-top {
+	background-color: #4A2F87 !important;
+	border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+	z-index: 990 !important;
+}
+
+/* Secondary and default buttons */
+[data-havano-theme="purple"] .btn-secondary,
+[data-havano-theme="purple"] .btn-default {
+	background-color: rgba(74, 47, 135, 0.2) !important;
+	border-color: rgba(255, 255, 255, 0.3) !important;
+	color: white !important;
+}
+
+[data-havano-theme="purple"] .btn-secondary:hover,
+[data-havano-theme="purple"] .btn-default:hover {
+	background-color: rgba(74, 47, 135, 0.35) !important;
+	border-color: rgba(255, 255, 255, 0.4) !important;
+	color: white !important;
+}
+
+/* List row head with theme color */
+[data-havano-theme="purple"] .list-row-head {
+	background-color: #4A2F87 !important;
+	color: white !important;
+}
+
+/* Level item color */
+[data-havano-theme="purple"] .level-item {
+	color: white !important;
+}
+
 /* ========== NAVY BLUE THEME ========== */
 
 /* Navy Blue theme - sidebar with navy gradient */
@@ -576,6 +677,44 @@ header.navbar {
 
 [data-havano-theme="navy blue"] .standard-sidebar-label {
 	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Standard sidebar items non-active */
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a {
+	color: rgba(255, 255, 255, 0.85) !important;
+}
+
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a:hover {
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active > a,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected > a {
+	color: white !important;
+}
+
+/* Standard sidebar item SVGs */
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a .icon {
+	color: rgba(255, 255, 255, 0.8) !important;
+	fill: rgba(255, 255, 255, 0.8) !important;
+	stroke: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a:hover svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a:hover .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active > a svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active > a .icon,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected > a svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected > a .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
 [data-havano-theme="navy blue"] .sidebar-item-icon,
@@ -814,6 +953,53 @@ header.navbar {
 	color: white !important;
 }
 
+/* Primary button with theme color */
+[data-havano-theme="navy blue"] .btn-primary {
+	background-color: #002b80 !important;
+	border-color: #001a4d !important;
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] .btn-primary:hover {
+	background-color: #001a4d !important;
+	border-color: #001133 !important;
+	color: white !important;
+}
+
+/* Sticky top elements with theme color */
+[data-havano-theme="navy blue"] .sticky-top,
+[data-havano-theme="navy blue"] .page-head.sticky-top {
+	background-color: #002b80 !important;
+	border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+	z-index: 990 !important;
+}
+
+/* Secondary and default buttons */
+[data-havano-theme="navy blue"] .btn-secondary,
+[data-havano-theme="navy blue"] .btn-default {
+	background-color: rgba(0, 43, 128, 0.2) !important;
+	border-color: rgba(255, 255, 255, 0.3) !important;
+	color: white !important;
+}
+
+[data-havano-theme="navy blue"] .btn-secondary:hover,
+[data-havano-theme="navy blue"] .btn-default:hover {
+	background-color: rgba(0, 43, 128, 0.35) !important;
+	border-color: rgba(255, 255, 255, 0.4) !important;
+	color: white !important;
+}
+
+/* List row head with theme color */
+[data-havano-theme="navy blue"] .list-row-head {
+	background-color: #002b80 !important;
+	color: white !important;
+}
+
+/* Level item color */
+[data-havano-theme="navy blue"] .level-item {
+	color: white !important;
+}
+
 /* Dark theme - only if enabled in settings */
 [data-havano-theme="dark"] .layout-side-section {
 	background-color: #1a202c !important;
@@ -877,6 +1063,44 @@ header.navbar {
 
 [data-havano-theme="dark"] .standard-sidebar-label {
 	color: #a0aec0 !important;
+}
+
+/* Standard sidebar items non-active */
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a {
+	color: #cbd5e0 !important;
+}
+
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a:hover {
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active > a,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected > a {
+	color: white !important;
+}
+
+/* Standard sidebar item SVGs */
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a .icon {
+	color: #a0aec0 !important;
+	fill: #a0aec0 !important;
+	stroke: #a0aec0 !important;
+}
+
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a:hover svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a:hover .icon {
+	color: #cbd5e0 !important;
+	fill: #cbd5e0 !important;
+	stroke: #cbd5e0 !important;
+}
+
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active > a svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active > a .icon,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected > a svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected > a .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
 /* All sidebar SVG and icons white in dark theme */
@@ -1118,6 +1342,53 @@ header.navbar {
 	color: #e2e8f0 !important;
 }
 
+/* Primary button with theme color */
+[data-havano-theme="dark"] .btn-primary {
+	background-color: #1a202c !important;
+	border-color: #2d3748 !important;
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .btn-primary:hover {
+	background-color: #2d3748 !important;
+	border-color: #4a5568 !important;
+	color: white !important;
+}
+
+/* Sticky top elements with theme color */
+[data-havano-theme="dark"] .sticky-top,
+[data-havano-theme="dark"] .page-head.sticky-top {
+	background-color: #1a202c !important;
+	border-bottom-color: #2d3748 !important;
+	z-index: 990 !important;
+}
+
+/* Secondary and default buttons */
+[data-havano-theme="dark"] .btn-secondary,
+[data-havano-theme="dark"] .btn-default {
+	background-color: #2d3748 !important;
+	border-color: #4a5568 !important;
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .btn-secondary:hover,
+[data-havano-theme="dark"] .btn-default:hover {
+	background-color: #374151 !important;
+	border-color: #5a6678 !important;
+	color: white !important;
+}
+
+/* List row head with theme color */
+[data-havano-theme="dark"] .list-row-head {
+	background-color: #1a202c !important;
+	color: #e2e8f0 !important;
+}
+
+/* Level item color */
+[data-havano-theme="dark"] .level-item {
+	color: white !important;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
 	/* Show mobile menu toggle ONLY on mobile */
@@ -1278,6 +1549,39 @@ header.navbar {
 	
 	.sidebar-overlay {
 		display: none !important;
+	}
+	
+	/* Ensure sidebar is always visible on desktop */
+	.layout-side-section {
+		transform: translateX(0) !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		display: block !important;
+	}
+	
+	/* Ensure all sidebar content is visible on desktop */
+	.layout-side-section .desk-sidebar,
+	.layout-side-section .list-sidebar {
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+	
+	.layout-side-section .desk-sidebar-item,
+	.layout-side-section .standard-sidebar-item,
+	.layout-side-section .sidebar-item-label,
+	.layout-side-section .sidebar-item-icon {
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+	
+	/* Ensure all text and icons are visible */
+	.layout-side-section *,
+	.layout-side-section a,
+	.layout-side-section span,
+	.layout-side-section div {
+		visibility: visible !important;
+		opacity: 1 !important;
 	}
 }
 
