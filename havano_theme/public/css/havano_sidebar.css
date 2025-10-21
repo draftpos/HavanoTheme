@@ -89,6 +89,24 @@ header.navbar {
 	margin-left: 0 !important;
 }
 
+/* Layout main section frappe-card - reduce excessive padding on larger screens */
+@media (min-width: 1024px) {
+	.layout-main-section.frappe-card {
+		max-width: 100% !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: var(--padding-md) !important;
+		padding-right: var(--padding-md) !important;
+	}
+}
+
+@media (min-width: 1440px) {
+	.layout-main-section.frappe-card {
+		padding-left: var(--padding-lg) !important;
+		padding-right: var(--padding-lg) !important;
+	}
+}
+
 /* ========== MOBILE MENU IN SIDEBAR ========== */
 
 /* Mobile menu toggle button - hidden by default on desktop */
@@ -245,7 +263,38 @@ header.navbar {
 	width: 100% !important;
 }
 
+/* ========== HIDE UNDEFINED TEXT ========== */
+
+/* Hide elements showing "undefined" in sidebar sections */
+.sidebar-section:empty,
+.filter-section:empty {
+	display: none !important;
+}
+
+/* Hide text nodes containing just "undefined" */
+.sidebar-section .text-muted:empty::before,
+.filter-section .text-muted:empty::before {
+	content: "" !important;
+	display: none !important;
+}
+
 /* ========== THEME VARIATIONS (OPTIONAL) ========== */
+
+/* Light theme (default) - active and selected items should be black */
+.standard-sidebar .standard-sidebar-item.active > a,
+.standard-sidebar .standard-sidebar-item.selected > a {
+	color: #000000 !important;
+	font-weight: 600 !important;
+}
+
+.standard-sidebar .standard-sidebar-item.active span svg,
+.standard-sidebar .standard-sidebar-item.active span .icon,
+.standard-sidebar .standard-sidebar-item.selected span svg,
+.standard-sidebar .standard-sidebar-item.selected span .icon {
+	color: #000000 !important;
+	fill: #000000 !important;
+	stroke: #000000 !important;
+}
 
 /* Purple theme - only if enabled in settings */
 [data-havano-theme="purple"] .layout-side-section {
@@ -309,12 +358,14 @@ header.navbar {
 }
 
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a:hover {
-	color: white !important;
+	color: #000000 !important;
+	font-weight: 600 !important;
 }
 
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active > a,
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected > a {
-	color: white !important;
+	color: #000000 !important;
+	font-weight: 600 !important;
 }
 
 /* Standard sidebar item SVGs */
@@ -325,6 +376,8 @@ header.navbar {
 	stroke: rgba(255, 255, 255, 0.8) !important;
 }
 
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item:hover span svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item:hover span .icon,
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a:hover svg,
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item > a:hover .icon {
 	color: white !important;
@@ -332,6 +385,10 @@ header.navbar {
 	stroke: white !important;
 }
 
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active span svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active span .icon,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected span svg,
+[data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected span .icon,
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active > a svg,
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.active > a .icon,
 [data-havano-theme="purple"] .standard-sidebar .standard-sidebar-item.selected > a svg,
@@ -600,17 +657,49 @@ header.navbar {
 
 /* Secondary and default buttons */
 [data-havano-theme="purple"] .btn-secondary,
-[data-havano-theme="purple"] .btn-default {
-	background-color: rgba(74, 47, 135, 0.2) !important;
+[data-havano-theme="purple"] .btn-default,
+[data-havano-theme="purple"] .filter-button {
+	background-color: rgba(74, 47, 135, 0.6) !important;
 	border-color: rgba(255, 255, 255, 0.3) !important;
 	color: white !important;
 }
 
 [data-havano-theme="purple"] .btn-secondary:hover,
-[data-havano-theme="purple"] .btn-default:hover {
-	background-color: rgba(74, 47, 135, 0.35) !important;
+[data-havano-theme="purple"] .btn-default:hover,
+[data-havano-theme="purple"] .filter-button:hover {
+	background-color: rgba(74, 47, 135, 0.75) !important;
 	border-color: rgba(255, 255, 255, 0.4) !important;
 	color: white !important;
+}
+
+/* Reset and nav link buttons */
+[data-havano-theme="purple"] .btn-reset,
+[data-havano-theme="purple"] .nav-link {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="purple"] .btn-reset:hover,
+[data-havano-theme="purple"] .nav-link:hover {
+	color: white !important;
+	background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-havano-theme="purple"] .btn-reset svg,
+[data-havano-theme="purple"] .btn-reset .icon,
+[data-havano-theme="purple"] .nav-link svg,
+[data-havano-theme="purple"] .nav-link .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+	stroke: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="purple"] .btn-reset:hover svg,
+[data-havano-theme="purple"] .btn-reset:hover .icon,
+[data-havano-theme="purple"] .nav-link:hover svg,
+[data-havano-theme="purple"] .nav-link:hover .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
 /* List row head with theme color */
@@ -622,6 +711,21 @@ header.navbar {
 /* Level item color */
 [data-havano-theme="purple"] .level-item {
 	color: white !important;
+}
+
+/* ES icon - white in sidebar, theme color elsewhere */
+[data-havano-theme="purple"] .layout-side-section .es-icon,
+[data-havano-theme="purple"] .layout-side-section .es-icon svg {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="purple"] .es-icon,
+[data-havano-theme="purple"] .es-icon svg {
+	color: #4A2F87 !important;
+	fill: #4A2F87 !important;
+	stroke: #4A2F87 !important;
 }
 
 /* ========== NAVY BLUE THEME ========== */
@@ -685,12 +789,14 @@ header.navbar {
 }
 
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a:hover {
-	color: white !important;
+	color: #000000 !important;
+	font-weight: 600 !important;
 }
 
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active > a,
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected > a {
-	color: white !important;
+	color: #000000 !important;
+	font-weight: 600 !important;
 }
 
 /* Standard sidebar item SVGs */
@@ -701,6 +807,8 @@ header.navbar {
 	stroke: rgba(255, 255, 255, 0.8) !important;
 }
 
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item:hover span svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item:hover span .icon,
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a:hover svg,
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item > a:hover .icon {
 	color: white !important;
@@ -708,6 +816,10 @@ header.navbar {
 	stroke: white !important;
 }
 
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active span svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active span .icon,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected span svg,
+[data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected span .icon,
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active > a svg,
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.active > a .icon,
 [data-havano-theme="navy blue"] .standard-sidebar .standard-sidebar-item.selected > a svg,
@@ -976,17 +1088,49 @@ header.navbar {
 
 /* Secondary and default buttons */
 [data-havano-theme="navy blue"] .btn-secondary,
-[data-havano-theme="navy blue"] .btn-default {
-	background-color: rgba(0, 43, 128, 0.2) !important;
+[data-havano-theme="navy blue"] .btn-default,
+[data-havano-theme="navy blue"] .filter-button {
+	background-color: rgba(0, 43, 128, 0.6) !important;
 	border-color: rgba(255, 255, 255, 0.3) !important;
 	color: white !important;
 }
 
 [data-havano-theme="navy blue"] .btn-secondary:hover,
-[data-havano-theme="navy blue"] .btn-default:hover {
-	background-color: rgba(0, 43, 128, 0.35) !important;
+[data-havano-theme="navy blue"] .btn-default:hover,
+[data-havano-theme="navy blue"] .filter-button:hover {
+	background-color: rgba(0, 43, 128, 0.75) !important;
 	border-color: rgba(255, 255, 255, 0.4) !important;
 	color: white !important;
+}
+
+/* Reset and nav link buttons */
+[data-havano-theme="navy blue"] .btn-reset,
+[data-havano-theme="navy blue"] .nav-link {
+	color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-havano-theme="navy blue"] .btn-reset:hover,
+[data-havano-theme="navy blue"] .nav-link:hover {
+	color: white !important;
+	background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-havano-theme="navy blue"] .btn-reset svg,
+[data-havano-theme="navy blue"] .btn-reset .icon,
+[data-havano-theme="navy blue"] .nav-link svg,
+[data-havano-theme="navy blue"] .nav-link .icon {
+	color: rgba(255, 255, 255, 0.9) !important;
+	fill: rgba(255, 255, 255, 0.9) !important;
+	stroke: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-havano-theme="navy blue"] .btn-reset:hover svg,
+[data-havano-theme="navy blue"] .btn-reset:hover .icon,
+[data-havano-theme="navy blue"] .nav-link:hover svg,
+[data-havano-theme="navy blue"] .nav-link:hover .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
 /* List row head with theme color */
@@ -998,6 +1142,21 @@ header.navbar {
 /* Level item color */
 [data-havano-theme="navy blue"] .level-item {
 	color: white !important;
+}
+
+/* ES icon - white in sidebar, theme color elsewhere */
+[data-havano-theme="navy blue"] .layout-side-section .es-icon,
+[data-havano-theme="navy blue"] .layout-side-section .es-icon svg {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="navy blue"] .es-icon,
+[data-havano-theme="navy blue"] .es-icon svg {
+	color: #002b80 !important;
+	fill: #002b80 !important;
+	stroke: #002b80 !important;
 }
 
 /* Dark theme - only if enabled in settings */
@@ -1071,12 +1230,14 @@ header.navbar {
 }
 
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a:hover {
-	color: #e2e8f0 !important;
+	color: #000000 !important;
+	font-weight: 600 !important;
 }
 
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active > a,
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected > a {
-	color: white !important;
+	color: #000000 !important;
+	font-weight: 600 !important;
 }
 
 /* Standard sidebar item SVGs */
@@ -1087,13 +1248,19 @@ header.navbar {
 	stroke: #a0aec0 !important;
 }
 
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item:hover span svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item:hover span .icon,
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a:hover svg,
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item > a:hover .icon {
-	color: #cbd5e0 !important;
-	fill: #cbd5e0 !important;
-	stroke: #cbd5e0 !important;
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active span svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active span .icon,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected span svg,
+[data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected span .icon,
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active > a svg,
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.active > a .icon,
 [data-havano-theme="dark"] .standard-sidebar .standard-sidebar-item.selected > a svg,
@@ -1365,17 +1532,49 @@ header.navbar {
 
 /* Secondary and default buttons */
 [data-havano-theme="dark"] .btn-secondary,
-[data-havano-theme="dark"] .btn-default {
-	background-color: #2d3748 !important;
-	border-color: #4a5568 !important;
+[data-havano-theme="dark"] .btn-default,
+[data-havano-theme="dark"] .filter-button {
+	background-color: #4a5568 !important;
+	border-color: #5a6678 !important;
 	color: #e2e8f0 !important;
 }
 
 [data-havano-theme="dark"] .btn-secondary:hover,
-[data-havano-theme="dark"] .btn-default:hover {
-	background-color: #374151 !important;
-	border-color: #5a6678 !important;
+[data-havano-theme="dark"] .btn-default:hover,
+[data-havano-theme="dark"] .filter-button:hover {
+	background-color: #5a6678 !important;
+	border-color: #6b7280 !important;
 	color: white !important;
+}
+
+/* Reset and nav link buttons */
+[data-havano-theme="dark"] .btn-reset,
+[data-havano-theme="dark"] .nav-link {
+	color: #e2e8f0 !important;
+}
+
+[data-havano-theme="dark"] .btn-reset:hover,
+[data-havano-theme="dark"] .nav-link:hover {
+	color: white !important;
+	background-color: #374151 !important;
+}
+
+[data-havano-theme="dark"] .btn-reset svg,
+[data-havano-theme="dark"] .btn-reset .icon,
+[data-havano-theme="dark"] .nav-link svg,
+[data-havano-theme="dark"] .nav-link .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="dark"] .btn-reset:hover svg,
+[data-havano-theme="dark"] .btn-reset:hover .icon,
+[data-havano-theme="dark"] .nav-link:hover svg,
+[data-havano-theme="dark"] .nav-link:hover .icon {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
 }
 
 /* List row head with theme color */
@@ -1387,6 +1586,21 @@ header.navbar {
 /* Level item color */
 [data-havano-theme="dark"] .level-item {
 	color: white !important;
+}
+
+/* ES icon - white in sidebar, theme color elsewhere */
+[data-havano-theme="dark"] .layout-side-section .es-icon,
+[data-havano-theme="dark"] .layout-side-section .es-icon svg {
+	color: white !important;
+	fill: white !important;
+	stroke: white !important;
+}
+
+[data-havano-theme="dark"] .es-icon,
+[data-havano-theme="dark"] .es-icon svg {
+	color: #1a202c !important;
+	fill: #1a202c !important;
+	stroke: #1a202c !important;
 }
 
 /* ========== RESPONSIVE ========== */
